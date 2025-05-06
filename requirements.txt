@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-python-multipart
-google-generativeai
-PyMuPDF
-python-dotenv
-googletrans
