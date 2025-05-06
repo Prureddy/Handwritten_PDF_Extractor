@@ -469,7 +469,7 @@
                     }, 500);
                     
                     // Make API call
-                    const response = await fetch('http://localhost:8000/extract-handwriting/', {
+                    const response = await fetch('${API_BASE}/extract-handwriting/', {
                         method: 'POST',
                         body: formData
                     });
@@ -1171,6 +1171,7 @@
             const downloadExtractedBtn = document.getElementById('downloadExtractedBtn');
             const languageSelect = document.getElementById('languageSelect');
             const translateBtn = document.getElementById('translateBtn');
+            const API_BASE = 'https://handwritten-backend.onrender.com';
     
             // Store original summary text
             let originalSummary = '';
@@ -1238,7 +1239,7 @@
                         progressBar.style.width = `${progress}%`;
                         progressStatus.textContent = `Processing... ${progress}%`;
                     }, 500);
-                    const resp = await fetch('http://localhost:8000/extract-handwriting/', { method: 'POST', body: formData });
+                    const resp = await fetch('${API_BASE}/extract-handwriting/', { method: 'POST', body: formData });
                     clearInterval(interval);
                     if (!resp.ok) {
                         const err = await resp.json();
@@ -1348,7 +1349,7 @@
                 translateBtn.disabled = true;
                 translateBtn.innerHTML = '<div class="loading-spinner"></div> Translating...';
                 try {
-                    const resp = await fetch('http://localhost:8000/translate/', {
+                    const resp = await fetch('${API_BASE}:8000/translate/', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: new URLSearchParams({ text: originalSummary, target_language: lang })
